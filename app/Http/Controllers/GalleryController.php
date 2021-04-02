@@ -7,23 +7,12 @@ use \App\Models\Gallery;
 
 class GalleryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $gallerys = Gallery::latest()->get();
         return view('admin.gallery.index', compact('gallerys'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $file = $request->gallery_photos;
@@ -37,25 +26,12 @@ class GalleryController extends Controller
         return redirect()->route('gallery.index')->with('success', 'Image Berhasil Tersimpan');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
        $gallerys = Gallery::findOrFail($id);
        return view('admin.gallery.edit', compact('gallerys'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $galery = Gallery::findOrFail($id);
@@ -82,12 +58,6 @@ class GalleryController extends Controller
         return redirect()->route('gallery.index')->with('success', 'Image Berhasil Di update');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $data = Gallery::findOrFail($id);

@@ -41,25 +41,12 @@ class AboutController extends Controller
         return redirect()->route('about.index')->with('success', 'Data Berhasil Disimpan');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $abouts = About::findOrFail($id);
         return view('admin.about.edit', compact('abouts'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $about = About::findOrFail($id);
@@ -80,12 +67,6 @@ class AboutController extends Controller
         return redirect()->route('about.index')->with('success', 'Data Berhasil Di update');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $data = About::findOrFail($id);
